@@ -40,6 +40,11 @@
 #    - if valid, return True
 #    - if invalid, return False
 
+# class CartItem
+# - product_id
+# - name
+# - quantity
+
 # class Cart - likitha
 # - items =[] -------- items = [(l123,laptop,1),(bs123,speakr,1),(k123,kb,1)]
 # - add_to_cart(product_id,name,quantity) - return True/False
