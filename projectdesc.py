@@ -1,4 +1,3 @@
-
 # server main code - rishi
 # - 
 # client main code - lalitha
@@ -42,9 +41,9 @@
 #    - if invalid, return False
 
 # class Cart - likitha
-# - items =[] -------- items = [(l123,1),(bs123,1),(k123,1)]
-# - add_to_cart(product_id,quantity) - return True/False
+# - items =[] -------- items = [(l123,laptop,1),(bs123,speakr,1),(k123,kb,1)]
+# - add_to_cart(product_id,name,quantity) - return True/False
+# - update_item_quantity(product_id,quantity) - return True/False
 # - remove_from_cart(product_id) - return True/False
 # - view_cart() - returns list of items in cart
 # - checkout(debit_card_no) - return True/False
-
