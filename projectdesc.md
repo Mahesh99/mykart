@@ -33,6 +33,8 @@ SERVER SIDE CODE
 
 CLIENT SIDE CODE
 -------------------------
+
+##MODEL
 class StockItem
   product_id
   name
