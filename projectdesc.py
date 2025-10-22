@@ -2,6 +2,7 @@
 # - 
 # client main code - lalitha
 
+- fail aithe -> registration failed ani cheppi reason print cheyyi. reason server send chesina response lo untadhi(e.g: user already exists)
 
 SERVER SIDE CODE
 --------------------------
@@ -35,7 +36,9 @@ CLIENT SIDE CODE
 -------------------------
 VIEW
 server ni connect avvadaniki socket create cheyyandi
-
+socket=socket.socket()
+client_socket,client_addr=socket.connect(('192.3.3.3',9999))
+- connected to server ani print chyyali
 Cart and Stock classes ki objects create cheyyandi
 (variable names)
 - cart
@@ -44,7 +47,26 @@ Cart and Stock classes ki objects create cheyyandi
 user_loggedin=True/False
 user_wallet_balance=False/number
 
-
+handleonboarding()
+- welcome screen display cheyyali
+- using l,r,e ane options ni batti login details ledha registration details input() ni use chesi collect cheskovali
+- collect cheskonnna data ni OnboardingUser classes lo unna methods ni call cheyyali
+- registration process
+    - pass collected data to start_registration() function
+    - if True returned 
+      - registration successful ani print chesi
+      - welcome screen print again
+    - if true return avvakunte
+      - message print chesi malli welcome screen ni print cheyyali
+- login process
+    - pass collected data to start_login() function
+    - if (True,string) return aithe
+      - login successful ani print chesi
+      - stock object ni vachina string tho update cheyyali using update_stock() function
+      - user_loggedin ni True cheyyali
+      - return True 
+    - if (false,string) return aithe
+      - message print chesi malli welcome screen ni print cheyyali
 
 User login avvagane 1 threads start avvali
 - server ninchi stock data vachinapudu stock object ni update cheyyali
@@ -73,20 +95,26 @@ class Stock
 
 
 # class OnboardingUser - manu
-#  - start_registration()
-#    - collect username, password, address, phone
+#  - start_registration(name,password,address,phoneno)
 #    - server ki data send cheyyali client socket use chesi send() function vadi
+        - "registration:name,password,address,phoneno"
      - server daggara nunchi success/fail message collect chesko recv() function tho
-#      - success aithe -> registration successful ani print chesi, server nunchi vachina debit card details print cheyyi
-       - fail aithe -> registration failed ani cheppi reason print cheyyi. reason server send chesina response lo untadhi(e.g: user already exists)
-#    - return True/False
+        - success aithe -> "success"
+        - fail aithe -> "fail:reasonmessage"
+#    - success/fail aithe -> return True/"reasonmessage"
 
-#  - start_login()
-#    - collect username and password
+#  - start_login(username,password)
 #    - server ki data send cheyyali client socket use chesi send() function vadi
+        - "login:username,password"
      - server daggara nunchi success/fail message collect chesko recv() function tho
-#    - if valid, return True
-#    - if invalid, return False
+        - success aithe -> "success:l123,laptop,20000,5|m123,mouse,300,9&wallet_balance"
+        - fail aithe -> "fail:reasonmessage"
+#    - if success, return : (True, tharvatha unna string ni return cheyyali)
+#    - if fail, return (False,"reasonmessage")
+
+
+# Dummy server for testing OnboardingUser class
+
 
 # class CartItem
 # - product_id
@@ -125,9 +153,6 @@ Cart total: 68300
 Wallet Balance: Rs.100000
 Cart Options : add,edit(e),remove(r),buy(b)
 Enter your input:
-
-
-
 
 WHEN ADDING TO CART
 Step-1
@@ -219,8 +244,8 @@ MyKart Store
 Manage account- Order history(o)- Logout(l)
 1. Laptop-Rs.34000 2.Keyboard-Rs.800 3.Mouse-Rs.300 4.Bluetooth Speaker-Rs.1200
 Your Cart
-1.Laptop qt:1 - Rs.34000
-Cart total: 34000
+1.Laptop qt:2 - Rs.68000
+Cart total: 68000
 Cart Options : add,edit,remove,buy
 Enter your input:
 
@@ -236,6 +261,7 @@ Your Cart
 1.Laptop qt:2 - Rs.68000
 2.Mouse qt:1 - Rs.300
 Cart total: 68300
+Wallet Balance: Rs.100000
 Cart Options : add,edit,remove,buy
 Enter your input:b
 
