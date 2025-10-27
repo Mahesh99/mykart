@@ -16,11 +16,9 @@ SERVER SIDE CODE
 #   return data
 
 # class Database - bhagya - CRUD - create,read,update,delete
-#  - add_user(username,password,card_no) - return True/False
+#  - add_user(username,password,address,phonenum,balance) - return True/False
+#  - update_user_balance(username,bal) - return True/False
 #  - read_users() - returns list of users
-
-#  - add_debitcars(card_no,balance) - return True/False
-#  - read_debitcards() - returns list of debit cards
 
 #  - add_products(prodid,name,price, quantity) - return True/False
 #  - update_products(prodid,quantity) - reduce or increase quantity - return True/False
