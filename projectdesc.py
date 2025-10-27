@@ -27,6 +27,7 @@ SERVER SIDE CODE
 #  - add_orders(order_id,username,product_id,status,time) - return True/False
 #  - update_orders(order_id,status) - return True/False
 #  - read_orders() - returns list of orders
+#  - get_user_order_history(username): - return Order list/ False
 
 
 
