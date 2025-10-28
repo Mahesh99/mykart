@@ -29,6 +29,33 @@ SERVER SIDE CODE
 #  - read_orders() - returns list of orders
 #  - get_user_order_history(username): - return Order list/ False
 
+"""
+l=["bhagyasree123","likitha234","ashwaq143","rishi567"]
+# filter()
+
+# higher order function
+# a function which takes another function as argument or returns a function as a value
+
+def func1(num):
+    print(num)
+
+# func1 takes number as an argument
+func1(123)
+
+# gd.sort(key=)
+
+# def a(x):
+#     return "a" in x
+
+funca=lambda x: "a" in x
+
+filtered_l=list(filter(funca,l))
+print(filtered_l)
+
+# ord1,bhagya,...........
+# ord2,ashwaq,...........
+# ord3,bhagya,...........
+"""
 
 
 CLIENT SIDE CODE
