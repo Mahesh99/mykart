@@ -2,10 +2,46 @@
 # - 
 # client main code - lalitha
 
+# server-client communication
+socket create ayinapudu
+- login start process - client start - "login:username,password"
+- login verification ayiponatharvatha - server response 
+    - success - "success:sessionid:l123,laptop,20000,5|m123,mouse,300,9&wallet_balance"
+    - fail - "fail:reasonmessage"
+
+- registration start process - client start - "registration:name,password,address,phoneno"
+- registration success/fail - server response
+    - success - "success"
+    - fail - "fail:reasonmessage"
+
+- one user makes a purchase - start of purchase process - client start - "purchase:sessionid:l123,3|m123,2
+- purchase process success/fail - server response  
+    - success -> broadcast stock to all clients 
+            customer who purchased - "success:l123,laptop,20000,5|m123,mouse,300,9&wallet_balance"
+            everyone - "stockupdate:l123,laptop,20000,2|m123,mouse,300,7"
+    - fail -> failed response - "fail"
+- orderhistory request - client start - "orderhistory:sessionid"
+  - send orderhistory to client - server response - "history:l123,packed,24-11-25|m123,delivered,24-11-25"
+    - logout request - client - "logout:sessionid"
+  - logout successful response - "success"
+
+
+
+
 - fail aithe -> registration failed ani cheppi reason print cheyyi. reason server send chesina response lo untadhi(e.g: user already exists)
 
 SERVER SIDE CODE
 --------------------------
+socket create chesi bind cheyyali(9999)
+client connect avvagane next steps
+- thread create chesi aa thread lo oka function run cheyyali - handleclient()
+- handleclient() 
+    - 
+
+
+
+
+
 # def updategamedata(name,turns):
 #   f=open("gamedata.txt","a")
 #   f.write(f"{name},{turns}\n")
@@ -133,7 +169,7 @@ class Stock
 #    - server ki data send cheyyali client socket use chesi send() function vadi
         - "login:username,password"
      - server daggara nunchi success/fail message collect chesko recv() function tho
-        - success aithe -> "success:l123,laptop,20000,5|m123,mouse,300,9&wallet_balance"
+        - success aithe -> "success:sessionid:l123,laptop,20000,5|m123,mouse,300,9&wallet_balance"
         - fail aithe -> "fail:reasonmessage"
 #    - if success, return : (True, tharvatha unna string ni return cheyyali)
 #    - if fail, return (False,"reasonmessage")
